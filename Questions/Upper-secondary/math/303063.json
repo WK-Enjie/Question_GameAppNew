@@ -1,0 +1,155 @@
+{
+  "title": "3D Trigonometry, Bearings and Applications",
+  "topic": "Trigonometry - Real World and 3D Problems",
+  "subject": "Mathematics",
+  "level": "Upper Secondary",
+  "grade": "Sec 3",
+  "chapter": 6,
+  "worksheet": 3,
+  "questions": [
+    {
+      "question": "A solid cuboid has a horizontal base measuring 5 cm by 12 cm, and a vertical height of 4 cm. Calculate the length of the internal space diagonal connecting a bottom corner to the opposite top corner.",
+      "options": ["12.6 cm", "13.0 cm", "13.6 cm", "14.2 cm"],
+      "correct": 2,
+      "points": 10,
+      "time": 120,
+      "explanation": "Step 1: Find the diagonal of the horizontal base using Pythagoras' Theorem: sqrt(5^2 + 12^2) = sqrt(25 + 144) = sqrt(169) = 13 cm. Step 2: Use this base diagonal and the vertical height to find the space diagonal: sqrt(13^2 + 4^2) = sqrt(169 + 16) = sqrt(185) ≈ 13.6 cm."
+    },
+    {
+      "question": "In a cuboid ABCD-EFGH, the horizontal base ABCD measures 8 cm by 6 cm, and the vertical edge CG is 5 cm. Determine the angle of inclination between the space diagonal AG and the horizontal base plane ABCD.",
+      "options": ["22.4 degrees", "26.6 degrees", "31.3 degrees", "45.0 degrees"],
+      "correct": 1,
+      "points": 12,
+      "time": 140,
+      "explanation": "Step 1: Calculate the length of the base diagonal AC: sqrt(8^2 + 6^2) = 10 cm. Step 2: Identify the right-angled triangle ACG, where CG is the opposite side (5 cm) and AC is the adjacent side (10 cm). Step 3: Compute the angle: tan(theta) = 5 / 10 = 0.5 => theta = tan^-1(0.5) ≈ 26.6 degrees."
+    },
+    {
+      "question": "A right pyramid VABCD has a horizontal square base ABCD with sides of length 12 cm. The slant edge VA connecting the apex to a base corner is 13 cm long. Calculate the vertical height of the apex V above the center of the base.",
+      "options": ["8.5 cm", "9.8 cm", "10.4 cm", "11.2 cm"],
+      "correct": 1,
+      "points": 12,
+      "time": 150,
+      "explanation": "Step 1: Find the full diagonal of the square base: sqrt(12^2 + 12^2) = sqrt(288) = 12 * sqrt(2) cm. Step 2: Find the distance from a corner to the center of the base (half-diagonal): (12 * sqrt(2)) / 2 = 6 * sqrt(2) ≈ 8.485 cm. Step 3: Apply Pythagoras' Theorem on the vertical right-angled triangle formed by the slant edge, height, and half-diagonal: Height = sqrt(13^2 - (6 * sqrt(2))^2) = sqrt(169 - 72) = sqrt(97) ≈ 9.8 cm."
+    },
+    {
+      "question": "A right pyramid VABCD has a horizontal square base ABCD of side length 10 cm. The vertical height of the pyramid is 12 cm. Find the angle of inclination between a triangular slant face and the horizontal base plane.",
+      "options": ["22.6 degrees", "42.5 degrees", "64.2 degrees", "67.4 degrees"],
+      "correct": 3,
+      "points": 12,
+      "time": 140,
+      "explanation": "Step 1: Draw a line from the center of the base to the midpoint of one of the sides. This horizontal distance is half the side length: 10 / 2 = 5 cm. Step 2: The vertical height (12 cm) and this horizontal distance (5 cm) form a right-angled triangle with the slant face's line of greatest slope. Step 3: Calculate the angle: tan(theta) = 12 / 5 = 2.4 => theta = tan^-1(2.4) ≈ 67.4 degrees."
+    },
+    {
+      "question": "A right circular cone features a base radius of 7 cm and a vertical height of 24 cm. Find the acute angle formed between the slant height line and the horizontal base plane.",
+      "options": ["16.3 degrees", "68.2 degrees", "73.7 degrees", "76.4 degrees"],
+      "correct": 2,
+      "points": 10,
+      "time": 110,
+      "explanation": "Step 1: The radius (7 cm) forms the adjacent side and the vertical height (24 cm) forms the opposite side of a vertical right-angled triangle inside the cone. Step 2: Calculate the angle: tan(theta) = 24 / 7 ≈ 3.4286 => theta = tan^-1(3.4286) ≈ 73.7 degrees."
+    },
+    {
+      "question": "A right prism has a cross-section shaped as a right-angled triangle ABC, where AB = 8 cm, BC = 6 cm, and angle ABC = 90 degrees. The longitudinal length of the prism is 15 cm. Calculate the length of the longest internal space diagonal possible within this solid.",
+      "options": ["15.0 cm", "16.2 cm", "18.0 cm", "19.5 cm"],
+      "correct": 2,
+      "points": 12,
+      "time": 130,
+      "explanation": "Step 1: The longest base diagonal is the hypotenuse AC of the triangular cross-section: sqrt(8^2 + 6^2) = 10 cm. Step 2: Use this diagonal along with the longitudinal length of the prism (15 cm) to form a right-angled triangle spanning the internal space: Diagonal = sqrt(10^2 + 15^2) = sqrt(100 + 225) = sqrt(325) ≈ 18.0 cm."
+    },
+    {
+      "question": "A vertical tower TW of height h meters stands on horizontal ground. From an observation point A located due South of the tower, the angle of elevation of the top T is 30 degrees. From an observation point B located due East of the tower, the angle of elevation of T is 45 degrees. Given that the direct distance between A and B is 60 meters, calculate the height h of the tower.",
+      "options": ["15 m", "20 m", "30 m", "45 m"],
+      "correct": 2,
+      "points": 15,
+      "time": 180,
+      "explanation": "Step 1: Express ground distances in terms of h. From triangle TWA: tan(30) = h / WA => WA = h / tan(30) = h * sqrt(3). From triangle TWB: tan(45) = h / WB => WB = h / tan(45) = h. Step 2: Since South and East are perpendicular, triangle WAB on the ground plane is right-angled at W: WA^2 + WB^2 = AB^2 => (h * sqrt(3))^2 + h^2 = 60^2 => 3h^2 + h^2 = 3600 => 4h^2 = 3600 => h^2 = 900 => h = 30 m."
+    },
+    {
+      "question": "A ship departs from a port P and travels 15 km on a true bearing of 060 degrees to reach checkpoint Q. It then adjusts its course and travels 22 km on a true bearing of 150 degrees to reach destination R. Calculate the straight-line distance between port P and destination R.",
+      "options": ["24.2 km", "25.0 km", "26.6 km", "37.0 km"],
+      "correct": 2,
+      "points": 14,
+      "time": 160,
+      "explanation": "Step 1: Find the interior angle at Q. The back-bearing of PQ is 60 + 180 = 240 degrees. The forward bearing of QR is 150 degrees. Step 2: The interior angle PQR is equal to the difference between these headings: 240 - 150 = 90 degrees. Step 3: Since triangle PQR is right-angled at Q, apply Pythagoras' Theorem: PR = sqrt(15^2 + 22^2) = sqrt(225 + 484) = sqrt(709) ≈ 26.6 km."
+    },
+    {
+      "question": "Three survey landmarks A, B, and C lie on a horizontal plane. Landmark B is located 10 km from A on a bearing of 070 degrees. Landmark C is located 14 km from A on a bearing of 130 degrees. Determine the true bearing of C from B.",
+      "options": ["165.4 degrees", "173.9 degrees", "186.1 degrees", "194.5 degrees"],
+      "correct": 1,
+      "points": 15,
+      "time": 200,
+      "explanation": "Step 1: Find interior angle BAC: 130 - 70 = 60 degrees. Step 2: Apply the Cosine Rule in triangle ABC to find distance BC: BC^2 = 10^2 + 14^2 - 2(10)(14)*cos(60) = 100 + 196 - 140 = 156 => BC = sqrt(156) ≈ 12.49 km. Step 3: Apply the Sine Rule to find interior angle ABC: sin(ABC) / 14 = sin(60) / 12.49 => sin(ABC) = 14 * 0.866 / 12.49 ≈ 0.9707 => acute angle ABC ≈ 76.1 degrees. Step 4: Work out headings. The back-bearing of AB is 70 + 180 = 250 degrees. Turning counter-clockwise by interior angle ABC gives the bearing of BC: 250 - 76.1 = 173.9 degrees."
+    },
+    {
+      "question": "A right pyramid VABCD has a square horizontal base ABCD of side length 8 cm. The slant height of each triangular face (measured from the apex V to the midpoint of any base side) is 7 cm. Find the dihedral angle formed between two opposite triangular slant faces.",
+      "options": ["60.0 degrees", "64.2 degrees", "69.7 degrees", "74.5 degrees"],
+      "correct": 2,
+      "points": 15,
+      "time": 180,
+      "explanation": "Step 1: Consider a vertical cross-section triangle VMN through the apex, where M and N are midpoints of opposite base sides. Side VM = 7 cm, VN = 7 cm, and the base line MN equals the side length of the square, 8 cm. Step 2: Use the Cosine Rule in triangle VMN to find angle MVN: 8^2 = 7^2 + 7^2 - 2(7)(7)*cos(theta) => 64 = 49 + 49 - 98*cos(theta) => 64 = 98 - 98*cos(theta) => 98*cos(theta) = 34 => cos(theta) = 34 / 98 ≈ 0.3469 => theta = sec^-1(0.3469) ≈ 69.7 degrees."
+    },
+    {
+      "question": "From the top of a cliff standing 100 m vertically above sea level, an observer tracks two vessels, A and B, resting on the horizontal sea plane. The angles of depression to vessels A and B are 45 degrees and 30 degrees respectively. From the base of the cliff, the true bearing of A is 060 degrees and the true bearing of B is 150 degrees. Calculate the direct distance separating the two vessels.",
+      "options": ["141.4 m", "173.2 m", "200.0 m", "223.6 m"],
+      "correct": 2,
+      "points": 16,
+      "time": 190,
+      "explanation": "Step 1: Calculate ground distances from the base of the cliff O using the angles of depression. OA = 100 / tan(45) = 100 m. OB = 100 / tan(30) = 100 * sqrt(3) ≈ 173.2 m. Step 2: Determine the horizontal ground angle AOB from the bearings: 150 - 60 = 90 degrees. Step 3: Since angle AOB is a right angle, apply Pythagoras' Theorem to solve for AB: AB = sqrt(100^2 + (100 * sqrt(3))^2) = sqrt(10000 + 30000) = sqrt(40000) = 200 m."
+    },
+    {
+      "question": "A right triangular prism ABCEDF has a horizontal base ABC that forms a right-angled triangle where AB = 5 cm, BC = 12 cm, and angle ABC = 90 degrees. The vertical edges AD, BE, and CF are each 8 cm high. Find the angle between the long space diagonal line DC and the horizontal base plane ABC.",
+      "options": ["28.4 degrees", "31.6 degrees", "34.8 degrees", "57.9 degrees"],
+      "correct": 1,
+      "points": 14,
+      "time": 150,
+      "explanation": "Step 1: Find the length of the projection line AC on the base plane: AC = sqrt(5^2 + 12^2) = 13 cm. Step 2: The line DC projects onto the base plane as AC, creating a vertical right-angled triangle DAC where angle DAC = 90 degrees and vertical height AD = 8 cm. Step 3: Calculate the angle DCA: tan(DCA) = AD / AC = 8 / 13 ≈ 0.6154 => DCA = tan^-1(0.6154) ≈ 31.6 degrees."
+    },
+    {
+      "question": "An aircraft leaves airport P and flies a straight path of 300 km on a true bearing of 040 degrees to checkpoint Q. It then alters its course and flies a straight path of 400 km to checkpoint R. Given that the direct return distance from airport P to checkpoint R is 600 km, calculate the interior angle PQR.",
+      "options": ["62.7 degrees", "95.5 degrees", "117.3 degrees", "122.8 degrees"],
+      "correct": 2,
+      "points": 14,
+      "time": 160,
+      "explanation": "Step 1: Identify that triangle PQR contains three known side dimensions: PQ = 300, QR = 400, and PR = 600. Step 2: Apply the Cosine Rule to evaluate angle PQR directly: PR^2 = PQ^2 + QR^2 - 2(PQ)(QR)*cos(PQR) => 600^2 = 300^2 + 400^2 - 2(300)(400)*cos(PQR) => 360000 = 90000 + 160000 - 240000*cos(PQR) => 110000 = -240000*cos(PQR) => cos(PQR) = -110000 / 240000 = -11 / 24 ≈ -0.4583. Step 3: Solve for the obtuse angle: PQR = cos^-1(-0.4583) ≈ 117.3 degrees."
+    },
+    {
+      "question": "An asymmetrical pyramid has a rectangular horizontal base ABCD where side AB = 8 cm and side BC = 6 cm. The apex V is located directly above the corner vertex A. Given that the vertical height edge VA is 12 cm, calculate the length of the longest slant edge VC.",
+      "options": ["13.2 cm", "14.4 cm", "15.6 cm", "16.8 cm"],
+      "correct": 2,
+      "points": 12,
+      "time": 130,
+      "explanation": "Step 1: Calculate the diagonal of the rectangular base AC: AC = sqrt(8^2 + 6^2) = 10 cm. Step 2: The apex V sits directly above A, making triangle VAC a vertical right-angled triangle at A. The longest slant edge is the hypotenuse VC. Step 3: Compute VC: VC = sqrt(VA^2 + AC^2) = sqrt(12^2 + 10^2) = sqrt(144 + 100) = sqrt(244) ≈ 15.6 cm."
+    },
+    {
+      "question": "A triangular canvas tent is modeled as a right triangular prism. The equilateral triangular cross-section front face has sides of length 2 m, and the length of the tent along the ground is 3 m. Calculate the angle of inclination that a support rope running from the top ridge line apex down to a rear ground corner makes with the horizontal ground plane.",
+      "options": ["24.3 degrees", "28.7 degrees", "31.6 degrees", "42.1 degrees"],
+      "correct": 1,
+      "points": 16,
+      "time": 180,
+      "explanation": "Step 1: Find the vertical height of the apex E above the front baseline midpoint M using properties of an equilateral triangle: Height EM = sqrt(2^2 - 1^2) = sqrt(3) m. Step 2: Calculate the horizontal ground distance from midpoint M to a rear ground corner C. Moving 1 m out and 3 m along the length gives: MC = sqrt(1^2 + 3^2) = sqrt(10) m. Step 3: The rope forms a right-angled triangle EMC where EM is the opposite vertical side and MC is the horizontal adjacent side. Angle ECM = tan^-1(sqrt(3) / sqrt(10)) = tan^-1(0.5477) ≈ 28.7 degrees."
+    },
+    {
+      "question": "A land surveyor stands at position A and notes a transmission tower B on a true bearing of 035 degrees. He walks a distance of 500 meters due East to reaching point C. From position C, the new true bearing of the transmission tower B is measured to be 320 degrees. Calculate the straight-line distance between point A and the tower B.",
+      "options": ["354.2 m", "396.5 m", "412.8 m", "435.0 m"],
+      "correct": 1,
+      "points": 15,
+      "time": 170,
+      "explanation": "Step 1: Analyze interior angles of triangle ABC. Due East represents a heading of 090, so interior angle BAC = 90 - 35 = 55 degrees. Step 2: Looking from C back towards West is 270 degrees. The bearing of B is 320, so interior angle BCA = 320 - 270 = 50 degrees. Step 3: Calculate the remaining interior angle ABC = 180 - 55 - 50 = 75 degrees. Step 4: Use the Sine Rule to calculate length AB: AB / sin(50) = 500 / sin(75) => AB = 500 * sin(50) / sin(75) ≈ 500 * 0.7660 / 0.9659 ≈ 396.5 meters."
+    },
+    {
+      "question": "A right pyramid has a square horizontal base with a side length of 12 cm and a vertical height of 8 cm. Determine the dihedral angle of inclination between any of the four triangular slant faces and the square horizontal base.",
+      "options": ["41.8 degrees", "48.6 degrees", "53.1 degrees", "56.3 degrees"],
+      "correct": 2,
+      "points": 12,
+      "time": 130,
+      "explanation": "Step 1: Draw a line from the base center to the midpoint of any base side. This distance is half the side length: 12 / 2 = 6 cm. Step 2: This horizontal distance (6 cm) and the vertical height (8 cm) form a right-angled triangle with the slant face profile line. Step 3: Calculate the base angle: tan(theta) = 8 / 6 = 1.3333 => theta = tan^-1(1.3333) ≈ 53.1 degrees."
+    },
+    {
+      "question": "A vertical telecommunications mast PQ of height 25 m is anchored at the peak of a uniform hill. From an observation outpost A located on horizontal ground at the foot of the hill, the angle of elevation of the bottom of the mast P is 20 degrees, and the angle of elevation of the top of the mast Q is 35 degrees. Determine the vertical height of the hill.",
+      "options": ["21.5 m", "24.3 m", "27.1 m", "32.8 m"],
+      "correct": 2,
+      "points": 16,
+      "time": 190,
+      "explanation": "Step 1: Let the hill height be h and the horizontal distance from A to the vertical axis of the mast be d. Step 2: Write two equations: tan(20) = h / d => d = h / tan(20). tan(35) = (h + 25) / d => d = (h + 25) / tan(35). Step 3: Equate the expressions for d: h / tan(20) = (h + 25) / tan(35) => h * tan(35) = h * tan(20) + 25 * tan(20) => h * (tan(35) - tan(20)) = 25 * tan(20) => h = (25 * 0.3640) / (0.7002 - 0.3640) = 9.099 / 0.3362 ≈ 27.1 m."
+    }
+  ]
+}
