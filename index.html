@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Quest — Duel of the Scholars</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="confetti-canvas"></canvas>
+    <div id="floating-particles"></div>
+
+    <div class="container">
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--  PIN SCREEN                                         -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <div id="pin-screen" class="screen active">
+            <div class="header">
+                <div class="logo-icon">⚔️</div>
+                <h1><i class="fas fa-gamepad"></i> Quiz Quest</h1>
+                <p class="subtitle">Flip cards · Deal damage · Break curses · Claim Victory!</p>
+            </div>
+
+            <div class="pin-input-section">
+                <p class="pin-label">Enter 6-Digit Quiz PIN</p>
+                <div class="pin-display">
+                    <div id="digit1" class="digit active-digit">
+                        <div class="digit-number">_</div>
+                        <div class="digit-label">Level</div>
+                    </div>
+                    <div id="digit2" class="digit">
+                        <div class="digit-number">_</div>
+                        <div class="digit-label">Subject</div>
+                    </div>
+                    <div id="digit3" class="digit">
+                        <div class="digit-number">_</div>
+                        <div class="digit-label">Grade</div>
+                    </div>
+                    <div class="pin-separator">—</div>
+                    <div id="digit4" class="digit">
+                        <div class="digit-number">_</div>
+                        <div class="digit-label">Ch×10</div>
+                    </div>
+                    <div id="digit5" class="digit">
+                        <div class="digit-number">_</div>
+                        <div class="digit-label">Ch×1</div>
+                    </div>
+                    <div class="pin-separator">—</div>
+                    <div id="digit6" class="digit">
+                        <div class="digit-number">_</div>
+                        <div class="digit-label">WS#</div>
+                    </div>
+                </div>
+                <div id="pin-decoded" class="pin-decoded-label"></div>
+            </div>
+
+            <div class="keypad">
+                <button class="key" data-key="1">1</button>
+                <button class="key" data-key="2">2</button>
+                <button class="key" data-key="3">3</button>
+                <button class="key" data-key="4">4</button>
+                <button class="key" data-key="5">5</button>
+                <button class="key" data-key="6">6</button>
+                <button class="key" data-key="7">7</button>
+                <button class="key" data-key="8">8</button>
+                <button class="key" data-key="9">9</button>
+                <button class="key clear" id="clear-btn">⌫</button>
+                <button class="key" data-key="0">0</button>
+                <button class="key submit" id="submit-pin">GO!</button>
+            </div>
+
+            <div class="quick-actions">
+                <button id="test-pin" class="btn test-btn">
+                    <i class="fas fa-flask"></i> Demo: 342-09-1
+                </button>
+                <button id="scan-quizzes" class="btn scan-btn">
+                    <i class="fas fa-search"></i> Scan Quizzes
+                </button>
+            </div>
+
+            <div class="catalog-container">
+                <div class="catalog-header">
+                    <h3><i class="fas fa-folder-open"></i> Available Quizzes</h3>
+                    <span id="quiz-count" class="badge">0 quizzes</span>
+                </div>
+                <div id="quiz-catalog" class="quiz-catalog"></div>
+            </div>
+
+            <div class="pin-legend">
+                <h4>📖 PIN Format Guide</h4>
+                <div class="legend-grid">
+                    <div class="legend-item"><strong>Digit 1</strong> 1=Primary · 2=Lower Sec · 3=Upper Sec</div>
+                    <div class="legend-item"><strong>Digit 2</strong> 0=Math · 1=Sci · 2=CombPhy · 3=PurePhy · 4=CombChem · 5=PureChem</div>
+                    <div class="legend-item"><strong>Digit 3</strong> Grade (1–6 for Primary / 1–4 for Secondary)</div>
+                    <div class="legend-item"><strong>Digits 4–5</strong> Chapter Number (e.g. 09 = Chapter 9)</div>
+                    <div class="legend-item"><strong>Digit 6</strong> Worksheet Number (1–9)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--  LOADING SCREEN                                     -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <div id="loading-screen" class="screen">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h2 id="loading-message">Loading Quiz...</h2>
+                <p id="loading-details">Preparing the battlefield...</p>
+                <div class="progress-container">
+                    <div id="scan-progress" class="progress-bar"></div>
+                </div>
+                <div id="quiz-found" class="found-count"></div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--  ERROR SCREEN                                       -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <div id="error-screen" class="screen">
+            <div class="error-content">
+                <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <h2>Quiz Not Found</h2>
+                <div id="error-message" class="error-details"></div>
+                <div class="action-buttons">
+                    <button id="back-to-pin-error" class="btn secondary">
+                        <i class="fas fa-home"></i> Back to Home
+                    </button>
+                    <button id="retry-btn" class="btn primary">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--  GAME SCREEN                                        -->
+        <!-- ═══════════════════════════════════════════════════ -->
+        <div id="game-screen" class="screen">
+
+            <!-- SCOREBOARD / HP BARS -->
+            <div class="scoreboard battle-mode">
+                <div class="sb-player sb-p1 active" id="sb-p1">
+                    <div class="sb-avatar" id="avatar-p1">😎</div>
+                    <div class="sb-info">
+                        <div class="sb-name" id="name-p1">Player 1</div>
+                        <div class="hp-bar-container">
+                            <div class="hp-fill" id="hp-fill-1" style="width:100%"></div>
+                            <span class="hp-text" id="hp-text-1">100 / 100</span>
+                        </div>
+                        <div class="sb-stats-row">
+                            <span class="combo-meter" id="combo-1">🔥 0x</span>
+                            <span class="score-chip" id="score-chip-1">⭐ 0</span>
+                        </div>
+                        <div class="curse-indicator hidden" id="curse-1">⚠️ CURSED!</div>
+                        <div class="shield-indicator hidden" id="shield-1">🛡️ SHIELDED</div>
+                    </div>
+                </div>
+
+                <div class="sb-center">
+                    <div class="sb-quiz-title" id="quiz-title">Quiz Quest</div>
+                    <div class="sb-quiz-topic" id="quiz-topic">Subject · Grade</div>
+                    <div class="vs-badge">⚔️ VS ⚔️</div>
+                    <div class="round-display" id="round-display">Round 1</div>
+                    <div class="sb-treasure-count">
+                        <i class="fas fa-gem"></i>
+                        <span id="treasures-remaining">0</span> gems
+                    </div>
+                </div>
+
+                <div class="sb-player sb-p2" id="sb-p2">
+                    <div class="sb-info" style="text-align:right">
+                        <div class="sb-name" id="name-p2">Player 2</div>
+                        <div class="hp-bar-container">
+                            <div class="hp-fill p2-fill" id="hp-fill-2" style="width:100%"></div>
+                            <span class="hp-text" id="hp-text-2">100 / 100</span>
+                        </div>
+                        <div class="sb-stats-row" style="justify-content:flex-end">
+                            <span class="score-chip" id="score-chip-2">⭐ 0</span>
+                            <span class="combo-meter" id="combo-2">🔥 0x</span>
+                        </div>
+                        <div class="curse-indicator hidden" id="curse-2">⚠️ CURSED!</div>
+                        <div class="shield-indicator hidden" id="shield-2">🛡️ SHIELDED</div>
+                    </div>
+                    <div class="sb-avatar" id="avatar-p2">🤓</div>
+                </div>
+            </div>
+
+            <!-- TURN BANNER -->
+            <div class="turn-banner p1-turn" id="turn-banner">
+                <div class="turn-glow"></div>
+                <span class="turn-avatar" id="turn-avatar">😎</span>
+                <span class="turn-text" id="turn-text">Player 1's Turn — Pick a card!</span>
+                <div class="turn-cards-left">
+                    <i class="fas fa-clone"></i>
+                    <span id="cards-remaining">0</span> left
+                </div>
+            </div>
+
+            <!-- RULES BAR -->
+            <div class="rules-bar" id="rules-bar">
+                <span class="rule-chip correct-rule">✅ Correct = Damage + Combo Bonus</span>
+                <span class="rule-chip wrong-rule">❌ Wrong = CURSED next turn</span>
+                <span class="rule-chip treasure-rule">🎁 Treasure = Power-Up!</span>
+                <span class="rule-chip curse-rule">⚠️ Curse = Penalty Question</span>
+            </div>
+
+            <!-- CARD BOARD -->
+            <div class="card-board" id="card-board"></div>
+
+            <!-- ─── QUESTION OVERLAY ─── -->
+            <div class="question-overlay" id="question-overlay">
+                <div class="question-backdrop"></div>
+                <div class="question-modal" id="q-modal-container">
+
+                    <div class="timer-wrapper">
+                        <div class="timer-track">
+                            <div class="timer-fill" id="timer-bar"></div>
+                        </div>
+                        <div class="timer-clock">
+                            <i class="fas fa-clock"></i>
+                            <span id="timer-text">45</span>s
+                        </div>
+                    </div>
+
+                    <div class="q-player-indicator" id="q-player-indicator">
+                        <span class="qpi-avatar" id="qpi-avatar">😎</span>
+                        <span class="qpi-name" id="qpi-name">Player 1 answering...</span>
+                        <span class="qpi-type" id="qpi-type"></span>
+                    </div>
+
+                    <div class="q-header">
+                        <span class="q-badge" id="q-number">Q1</span>
+                        <span class="q-points-badge" id="q-points">10 DMG</span>
+                        <span class="q-special-badge" id="q-special"></span>
+                    </div>
+
+                    <div class="q-body">
+                        <p class="q-text" id="question-text">Question goes here</p>
+                    </div>
+
+                    <div class="q-options" id="options-container"></div>
+
+                    <button class="btn-submit" id="submit-answer" disabled>
+                        <i class="fas fa-lock"></i>
+                        <span>Lock In Answer</span>
+                    </button>
+
+                    <div class="q-result-banner" id="q-result-banner"></div>
+                    <div class="q-explanation" id="q-explanation"></div>
+
+                    <button class="btn-next hidden" id="next-btn">
+                        <span>Continue</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ─── TREASURE OVERLAY ─── -->
+            <div class="treasure-overlay" id="treasure-overlay">
+                <div class="treasure-backdrop"></div>
+                <div class="treasure-modal">
+                    <div class="treasure-header">
+                        <span class="treasure-sparkle">✨</span>
+                        <span class="treasure-gift" id="treasure-tier-icon">🎁</span>
+                        <span class="treasure-sparkle">✨</span>
+                    </div>
+                    <h3 class="treasure-title" id="treasure-title">Choose Your Treasure!</h3>
+                    <div class="treasure-tier-badge" id="treasure-tier-badge">Mystery Box</div>
+                    <div class="treasure-grid" id="treasure-grid">
+                        <div class="t-box" data-box="0">
+                            <div class="t-box-inner">
+                                <div class="t-box-front">🎁</div>
+                                <div class="t-box-back" id="t-back-0"></div>
+                            </div>
+                        </div>
+                        <div class="t-box" data-box="1">
+                            <div class="t-box-inner">
+                                <div class="t-box-front">🎁</div>
+                                <div class="t-box-back" id="t-back-1"></div>
+                            </div>
+                        </div>
+                        <div class="t-box" data-box="2">
+                            <div class="t-box-inner">
+                                <div class="t-box-front">🎁</div>
+                                <div class="t-box-back" id="t-back-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="treasure-result" id="treasure-result"></div>
+                    <button class="btn-next hidden" id="treasure-continue">
+                        <span>Continue</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ─── CURSE PENALTY OVERLAY ─── -->
+            <div class="curse-overlay" id="curse-overlay">
+                <div class="curse-backdrop"></div>
+                <div class="curse-modal">
+                    <div class="curse-header">
+                        <div class="curse-skull">💀</div>
+                        <h2>CURSED!</h2>
+                        <p id="curse-modal-name">Player 1 must face a penalty question!</p>
+                    </div>
+                    <div class="curse-stakes">
+                        <div class="stake-card good">
+                            <div class="stake-icon">✅</div>
+                            <div class="stake-text">Answer Correctly</div>
+                            <div class="stake-effect">Curse lifts! Return to board.</div>
+                        </div>
+                        <div class="stake-card bad">
+                            <div class="stake-icon">❌</div>
+                            <div class="stake-text">Answer Wrongly</div>
+                            <div class="stake-effect">Take 15 recoil dmg. Curse persists!</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="curse-start-btn">
+                        <i class="fas fa-skull-crossbones"></i> Face the Penalty!
+                    </button>
+                </div>
+            </div>
+
+            <!-- ─── GAME OVER OVERLAY ─── -->
+            <div class="gameover-overlay" id="game-over">
+                <div class="gameover-backdrop"></div>
+                <div class="gameover-modal">
+                    <div class="go-fireworks" id="go-fireworks"></div>
+                    <div class="go-celebration" id="go-celebration">🏆</div>
+                    <h2 class="go-title" id="winner-message">Game Over!</h2>
+                    <div class="go-winner-name" id="winner-name">Player 1 Wins!</div>
+                    <div class="go-stats" id="go-stats"></div>
+                    <div class="go-actions">
+                        <button id="restart-btn" class="btn primary">
+                            <i class="fas fa-redo"></i> Rematch
+                        </button>
+                        <button id="new-chapter-btn" class="btn secondary">
+                            <i class="fas fa-home"></i> New Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCORE POPUPS LAYER -->
+            <div id="score-popups"></div>
+
+            <!-- BOTTOM CONTROLS BAR -->
+            <div class="game-controls-bar">
+                <button id="home-btn" class="gc-btn" title="Back to Home">
+                    <i class="fas fa-home"></i>
+                </button>
+                <div class="gc-quiz-code">
+                    <i class="fas fa-hashtag"></i>
+                    <span id="current-quiz-code">000-00-0</span>
+                </div>
+                <button id="sound-btn" class="gc-btn" title="Toggle Sound">
+                    <i class="fas fa-volume-up" id="sound-icon"></i>
+                </button>
+            </div>
+
+        </div><!-- /game-screen -->
+    </div><!-- /container -->
+
+    <script src="script.js"></script>
+</body>
+</html>
